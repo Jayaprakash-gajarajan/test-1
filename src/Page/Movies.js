@@ -2,7 +2,8 @@ import React from 'react'
 import MovieCart from '../componets/MovieCart'
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
-import { useState,useEffect } from 'react'
+import { useState,useEffect } from 'react';
+// import {useSelector} from 'react-redux'
 // const movies = [
 //   {
 //     "id": "99",
@@ -79,6 +80,7 @@ import { useState,useEffect } from 'react'
 //   }
 // ]
 function Movies() {
+  // const {items}=useSelector((state)=>state.movie);
   const[apiData,setApiData]=useState([]);
 const roleId=localStorage.getItem('roleId')
 const getApi=()=>{

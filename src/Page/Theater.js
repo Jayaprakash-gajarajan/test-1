@@ -2,7 +2,7 @@ import React from 'react'
 import '../Page/Theater.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-function Theater({count,setCount,price,setPrice,setPayment}) {
+function Theater({count,setCount,price,setPrice,setPayment,name,setName}) {
   // const [disabled,setDisabled]=useState(false)
   const navigate=useNavigate();
   const [show,setShow]=useState(true);
@@ -110,9 +110,9 @@ let style2={
 </div>
 </div>
 <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-2 m-15 col-form-label">Name:</label>
+    <label  class="col-sm-2 m-15 col-form-label">Name:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword"/>
+      <input type="text" class="form-control" id="inputPassword" onChange={(e)=>setName(e.target.value)}/>
     </div>
   </div>
     <ul className="showcase">

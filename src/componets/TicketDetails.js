@@ -1,6 +1,7 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 function TicketDetails({movie}) {
+  const navigate=useNavigate();
   return (
     <div>
        <div className="col card" style={{width:"18rem"}}>
@@ -11,7 +12,7 @@ function TicketDetails({movie}) {
     <h6>Certificate :{movie.certificate}</h6>
     <h4>Price :{movie.price}</h4>
     <p className="card-text">
-        <button className='btn btn-primary mt-3 w-100' >
+        <button className='btn btn-primary mt-3 w-100'onClick={()=>(navigate('/login'))} >
           BOOk
         </button>
     </p>

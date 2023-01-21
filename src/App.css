@@ -10,6 +10,14 @@
   max-width: 400px;
   margin: 0 auto ;
 }
+.add-movie-form {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  gap: 1em;
+  margin: 1rem auto;
+}
 /*
 .App-logo {
   height: 40vmin;
