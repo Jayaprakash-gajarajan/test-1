@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import TicketDetails from '../componets/TicketDetails'
 import axios from 'axios'
 import { useState } from 'react'
+import {useSelector,useDispatch} from 'react-redux'
 // const movies = [
 //     {
 //       "id": "99",
@@ -96,19 +97,22 @@ import { useState } from 'react'
 //     }
 //   ]
 function TicketPrice() {
-  const[apiData,setApiData]=useState([]);
-  const getApi=async()=>{
-    const movie=await axios.get("http://localhost:4000/movies")
-    setApiData(movie.data)
-    console.log(movie);
-  } 
-  useEffect(()=>{
- getApi();
-  },[])
+//   const[apiData,setApiData]=useState([]);
+//   const getApi=async()=>{
+//     const movie=await axios.get("http://localhost:4000/movies")
+//     setApiData(movie.data)
+//     console.log(movie);
+//   } 
+//   useEffect(()=>{
+//  getApi();
+//   },[])
+// const dispatcher=useDispatch();
+const {items}=useSelector((state)=>state.movie);
+// console.log(items);
   return (
     <div>
       <div className='card-container'> 
-       { apiData.length>0? apiData.map((movie,index)=>(<TicketDetails movie={movie} key={`product cart${index}`} />)):(<p>No Details</p>)}
+       { items.length>0? items.map((movie,index)=>(<TicketDetails movie={movie} key={`product cart${index}`} />)):(<p>No Details</p>)}
      </div>
     </div>
   )
