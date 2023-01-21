@@ -2,7 +2,7 @@ import React from 'react'
 import '../Page/Theater.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-function Theater({count,setCount,price,setPrice,payment}) {
+function Theater({count,setCount,price,setPrice,setPayment}) {
   // const [disabled,setDisabled]=useState(false)
   const navigate=useNavigate();
   const [show,setShow]=useState(true);
@@ -280,7 +280,11 @@ let style2={
     </div>
   <p className="text">You have selected <span id="count">{count}</span> seat for a price of RS.<span id="total">{price}</span></p>   
 </div>
-    <button className='btn btn-primary w-100' onClick={()=>(navigate('/pay'))} >Proceed to pay </button> 
+    <button className='btn btn-primary w-100' onClick={()=>{
+      setPayment(false)
+      (navigate('/pay'))}
+    }
+       >Proceed to pay </button> 
 </div>
   )
 }

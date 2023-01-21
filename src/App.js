@@ -27,7 +27,7 @@ function App() {
      </ProdectedRoute>
          }/>
     <Route path='/tickets' element={<TicketPrice/>}/>
-    <Route path='/theater' element={<Theater count={count} setCount={setCount} price={price} setPrice={setPrice} payment={payment} />}/>
+    <Route path='/theater' element={<Theater count={count} setCount={setCount} price={price} setPrice={setPrice} setPayment={setPayment} />}/>
     <Route path='/pay' element={<Payment count={count}setCount={setCount} price={price}setPrice={setPrice} payment={payment} setPayment={setPayment}/>}></Route>
     <Route path='/login' element={<Login/>}></Route>
   </Routes>

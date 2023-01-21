@@ -5,8 +5,9 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // signup  page i am not created so i can insert the data in postman
-// username:"prakash"password:"prakash@123" roleId :"0"
-// username:"sridhar"password:"sridhar@123" roleId :"1"
+// ADMIN can only see the delete button 
+// ADMIN: username:"prakash"password:"prakash@123" roleId :"0"
+// NORMAL USER: username:"sridhar"password:"sridhar@123" roleId :"1"
 function Login() {
     const [formState,setFormState]=useState("success");
     const navigate=useNavigate();
