@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '@mui/material';
 import { checkAuth ,logout} from '../Page/Movies'
 import { useNavigate } from 'react-router-dom';
+import { API } from '../global';
 const ROLE_ID={
     ADMIN:"0",
     NORMAL_USER:"1",
@@ -10,7 +11,7 @@ function MovieCart({movie,getApi}) {
   const navigate=useNavigate();
   const roleId=localStorage.getItem("roleId")
   const deleteMobile=() => {
-    fetch(`http://localhost:4000/movies/${movie._id}`, {
+    fetch(`${API}/${movie._id}`, {
         method: "DELETE",
         headers: {
           "x-auth-token": localStorage.getItem("token"),

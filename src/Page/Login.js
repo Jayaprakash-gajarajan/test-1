@@ -4,6 +4,7 @@ import {Button} from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API } from '../global';
 // signup  page i am not created so i can insert the data in postman
 // ADMIN can only see the delete button 
 // ADMIN: username:"prakash"password:"prakash@123" roleId :"0"
@@ -15,7 +16,7 @@ function Login() {
         initialValues:{username:"prakash",password:"123"},
         onSubmit:async(values)=>{
             console.log(values);
-         const data = await fetch("http://localhost:4000/login",{
+         const data = await fetch(`${API}/login`,{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json"

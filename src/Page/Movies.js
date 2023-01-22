@@ -101,7 +101,7 @@ useEffect(()=> getApi(),[])
   return (
     <div>
       <div className='card-container'> 
-       { apiData.length>0? apiData.map((movie,index)=>(<MovieCart movie={movie} getApi={getApi} key={`product cart${index}`} />)):(<p>no pizza</p>)}
+       { apiData.length>0? apiData.map((movie,index)=>(<MovieCart movie={movie} getApi={getApi} key={`product cart${index}`} />)):(<p>No movie or run the db</p>)}
      </div>
     </div>
   )
