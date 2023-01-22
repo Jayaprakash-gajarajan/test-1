@@ -3,6 +3,7 @@ import MovieCart from '../componets/MovieCart'
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import { useState,useEffect } from 'react';
+import { API } from '../global';
 // import {useSelector} from 'react-redux'
 // const movies = [
 //   {
@@ -84,7 +85,7 @@ function Movies() {
   const[apiData,setApiData]=useState([]);
 const roleId=localStorage.getItem('roleId')
 const getApi=()=>{
-  fetch("http://localhost:4000/movies", {
+  fetch(`${API}/movies`, {
     method: "GET",
     headers: {
       "x-auth-token": localStorage.getItem("token"),
