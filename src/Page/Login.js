@@ -16,7 +16,7 @@ function Login() {
         initialValues:{username:"prakash",password:"123"},
         onSubmit:async(values)=>{
             console.log(values);
-         const data = await fetch(`http://localhost:4000/login`,{
+         const data = await fetch(API+"/"+"login",{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json"
