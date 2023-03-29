@@ -85,7 +85,7 @@ function Movies() {
   const[apiData,setApiData]=useState([]);
 const roleId=localStorage.getItem('roleId')
 const getApi=()=>{
-  fetch(`${API}/movies`, {
+  fetch("https://63edccda388920150dd323c9.mockapi.io/movies", {
     method: "GET",
     headers: {
       "x-auth-token": localStorage.getItem("token"),
@@ -94,6 +94,7 @@ const getApi=()=>{
 
   })
     .then((data) => checkAuth(data))
+    
     .then((data1) => setApiData(data1))
     .catch((err) => logout());
 }

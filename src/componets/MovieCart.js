@@ -1,17 +1,26 @@
 import React from 'react'
 import { Button } from '@mui/material';
 import { checkAuth ,logout} from '../Page/Movies'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { API } from '../global';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
 const ROLE_ID={
     ADMIN:"0",
     NORMAL_USER:"1",
   };
 function MovieCart({movie,getApi}) {
   const navigate=useNavigate();
+  const [apiData, setApiData] = useState([]);
+  const id=localStorage.getItem("id")
   const roleId=localStorage.getItem("roleId")
-  const deleteMobile=() => {
-    fetch(`${API}/${movie._id}`, {
+  const callGetAPI = async () => {
+    const resp = await axios.get("https://63edccda388920150dd323c9.mockapi.io/movies");
+    setApiData(resp.data);
+  }
+ /* const deleteMobile=() => {
+    fetch(`${API}/${movie.id}`, {
         method: "DELETE",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
@@ -22,7 +31,15 @@ function MovieCart({movie,getApi}) {
         .then((data) => checkAuth(data))
         .then(() => getApi())
         .catch((err) => logout());
-    };
+    };*/
+    const deleteMobile = async (id) => {
+      await axios.delete("https://63edccda388920150dd323c9.mockapi.io/movies"+"/"+id)
+      console.log(id);
+      getApi();
+    }
+    useEffect(() => {
+      callGetAPI();
+    }, []);
   return (
     <div>
       <div className="col card" style={{width:"18rem"}}>
@@ -39,7 +56,7 @@ function MovieCart({movie,getApi}) {
            (
            <Button
             color={"error"}
-            onClick={()=>deleteMobile(movie._id)}
+            onClick={()=>deleteMobile(movie.id)}
             style={{width:"100%"}}
             variant="contained"
                 >
