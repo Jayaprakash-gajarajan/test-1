@@ -9,7 +9,7 @@ const movieValidationShema = yup.object({
     poster: yup.string().required().min(4),
     rating: yup.number().required().min(0).max(10),
     summary: yup.string().required().max(20),
-    trailer: yup.string().required().min(4).url(),
+    trailer: yup.string().required().min(4),
   })
 function AddMovie() {
     // const API="http://localhost:4000";
@@ -37,7 +37,7 @@ function AddMovie() {
     //     summary: summary,
     //     trailer: trailer,
     //   };
-    fetch(`${API}/movies`, {
+    fetch(`https://63edccda388920150dd323c9.mockapi.io/movies`, {
       method: "POST",
       body: JSON.stringify(newMovie),
       headers: { "content-type": "application/json" }
@@ -96,7 +96,7 @@ function AddMovie() {
       />
       {touched.trailer && errors.trailer ? errors.trailer : null}
 
-      <Button type="submit" variant='contained'>Add Movie</Button>
+      <Button type="submit" variant='contained' onClick={addMovie}>Add Movie</Button>
     </form>
     </div>
   )
