@@ -1,22 +1,23 @@
 import React from 'react'
-import  {TextField} from "@mui/material";
-import {Button} from "@mui/material";
-import { useFormik } from "formik";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { API } from '../global';
-// signup  page i am not created so i can insert the data in postman
-// ADMIN can only see the delete button 
-// ADMIN: username:"prakash"password:"prakash@123" roleId :"0"
-// NORMAL USER: username:"sridhar"password:"sridhar@123" roleId :"1"
-function Login() {
+import * as yup from 'yup';
+import { useEffect, useState } from 'react';
+import { useFormik } from 'formik';
+import { API } from './global';
+import { useNavigate } from 'react-router-dom';
+import { Button, TextField } from '@mui/material';
+const movieValidationShema = yup.object({
+    username: yup.string().required(),
+    password:yup.string().required().min(8),
+  })
+  function Signin() {
     const [formState,setFormState]=useState("success");
     const navigate=useNavigate();
-    const {handleChange,values,handleSubmit}=useFormik({
+    const {handleChange,values,handleSubmit,handleBlur, touched, errors}=useFormik({
         initialValues:{username:"",password:""},
+        validationSchema: movieValidationShema,
         onSubmit:async(values)=>{
             console.log(values);
-         const data = await fetch(API+"/"+"login",{
+         const data = await fetch(API+"/"+"signup",{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json"
@@ -24,47 +25,51 @@ function Login() {
                 body:JSON.stringify(values),
             });
             if(data.status==401){
-                console.log("error");
+                console.log("username already exist");
                 setFormState("error")
+                
             }
             else{
                 const result= await data.json()
                 console.log("success",result);
                 localStorage.setItem("token",result.token)
                 localStorage.setItem("roleId",result.roleId)
-                navigate("/movies")
+                navigate("/login")
             }
           
         },
-});
+  });
   return (
     <div>
-       <form onSubmit={handleSubmit} className="login-form" >
-                <h2>Login</h2>
+      <form onSubmit={handleSubmit} className="login-form" >
+                <h2>Sign in</h2>
             <TextField 
             id="outlined-basic" 
             label="Username"
              variant="outlined"
              onChange={handleChange} 
+             onBlur={handleBlur}
              value={values.username}
              name="username"
              /> 
-
+  {touched.username && errors.username ? errors.username : null}
            <TextField id="outlined-basic"
             label="Password" 
             variant="outlined" 
             onChange={handleChange} 
             value={values.password}
+            onBlur={handleBlur}
             name="password"
             />   
-
+  {touched.password && errors.password ? errors.password : null}
             <Button  color={formState}
             type="submit" variant="contained">
-                {formState ==="error"?"Retry":"Submit"}
+                {formState ==="error"?"Retry":"Sign in"}
                 </Button>
             </form>
-        </div>
+    </div>
   )
-}
+  }
+  
 
-export default Login
+export default Signin

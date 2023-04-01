@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 function Navigation() {
+  const roleId=localStorage.getItem("roleId")
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -27,9 +28,12 @@ function Navigation() {
           <Link className="nav-link"to={'/pay'} role="button">
            Payment
           </Link>
-          </li>
+          </li> 
           <li className="nav-item">
-          <Link className="nav-link" to={'/login'}>Login</Link>
+         <Link className="nav-link" to={'/login'}>Login</Link>
+        </li>
+        <li>
+       <Link className='nav-link'to={'/signup'}>Sign up</Link>
         </li>
       </ul>
     </div>
