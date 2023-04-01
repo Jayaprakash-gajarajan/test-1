@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from '../global';
+// import TextField from '@mui/material/TextField';
 // signup  page i am not created so i can insert the data in postman
 // ADMIN can only see the delete button 
 // ADMIN: username:"prakash"password:"prakash@123" roleId :"0"
@@ -40,16 +41,16 @@ function Login() {
   return (
     <div>
        <form onSubmit={handleSubmit} className="login-form" >
-                <h2>Login</h2>
+                <h2>LOGIN</h2>
             <TextField 
             id="outlined-basic" 
             label="Username"
              variant="outlined"
              onChange={handleChange} 
              value={values.username}
-             name="username"
+             name="username" 
              /> 
-
+             
            <TextField id="outlined-basic"
             label="Password" 
             variant="outlined" 
@@ -57,10 +58,10 @@ function Login() {
             value={values.password}
             name="password"
             />   
-
+        
             <Button  color={formState}
             type="submit" variant="contained">
-                {formState ==="error"?"Retry":"Submit"}
+                {formState ==="error"?"RETRY":"LOGIN"}
                 </Button>
             </form>
         </div>
