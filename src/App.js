@@ -19,6 +19,7 @@ import Login from './Page/Login';
 import { ProdectedRoute } from './Page/Movies';
 import AddMovie from './Page/AddMovie';
 import Signin from './Signin';
+import EditMovie from './Page/EditMovie';
 // import SliderOne from './SliderOne';
 function App() {
   let [count,setCount]=useState(0);
@@ -38,6 +39,7 @@ function App() {
          }/>
     <Route path='/tickets' element={<TicketPrice/>}/>
     <Route path='/addmovie' element={<AddMovie/>}></Route>
+    <Route path='/edit/:id' element={<EditMovie/>}></Route>
     <Route path='/theater' element={<Theater count={count} setCount={setCount} price={price} setPrice={setPrice} setPayment={setPayment}name={name}setName={setName} />}/>
     <Route path='/pay' element={<Payment count={count}setCount={setCount} price={price}setPrice={setPrice} payment={payment} setPayment={setPayment}name={name} setName={setName}/>}></Route>
     <Route path='/login' element={<Login/>}></Route>

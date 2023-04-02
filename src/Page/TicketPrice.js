@@ -3,6 +3,7 @@ import TicketDetails from '../componets/TicketDetails'
 import axios from 'axios'
 import { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 // const movies = [
 //     {
 //       "id": "99",
@@ -97,6 +98,7 @@ import {useSelector,useDispatch} from 'react-redux'
 //     }
 //   ]
 function TicketPrice() {
+  const navigate=useNavigate();
 //   const[apiData,setApiData]=useState([]);
 //   const getApi=async()=>{
 //     const movie=await axios.get("http://localhost:4000/movies")
@@ -107,12 +109,29 @@ function TicketPrice() {
 //  getApi();
 //   },[])
 // const dispatcher=useDispatch();
-const {items}=useSelector((state)=>state.movie);
+// const {items}=useSelector((state)=>state.movie);
 // console.log(items);
+const [items,setItems]=useState([]);
+const getMovies = () => {
+  fetch(`https://63edccda388920150dd323c9.mockapi.io/movies`, {
+    method: "GET",
+  })
+    .then((datas) => datas.json())
+    .then((msv) => setItems(msv));
+
+};
+useEffect(() => getMovies(), [])
   return (
     <div>
       <div className='card-container'> 
-       { items.length>0? items.map((movie,index)=>(<TicketDetails movie={movie} key={`product cart${index}`} />)):(<p>No Details</p>)}
+       { items.length>0? items.map((movie,index)=>(
+       <TicketDetails 
+       editButton={
+       <button className='btn btn-primary mt-3 w-100'onClick={()=>(navigate(`/edit/${movie.id}`))} >
+       EDIT
+     </button>
+     }
+       movie={movie} key={`product cart${index}`} />)):(<p>No Details</p>)}
      </div>
     </div>
   )

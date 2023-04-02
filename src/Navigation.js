@@ -19,6 +19,9 @@ function Navigation() {
           <Link className="nav-link" to={'/addmovie'}>Add Movie</Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to={'/edit/:id'}>Edit Movie</Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to={'/tickets'}>Tickets Details</Link>
         </li>
         <li className="nav-item">
