@@ -46,12 +46,15 @@ function MovieCart({movie,getApi}) {
   <img src={movie.poster} className="card-img-top"
    alt={movie.name}/>
   <div className="card-body">
-    <h5 className='cart-tittle'>{movie.name}</h5>
+  <h4 className='cart-tittle'>Movie :{movie.name}</h4>
+    <h6>Certificate :{movie.certificate}</h6>
+    <h4>Price :{movie.price}</h4>
     <p>{movie.summary}</p>
     <p className="card-text">
+      {roleId==1?
         <button className='btn btn-primary mb-3 w-100 ' onClick={()=>(navigate('/theater'))}>
           BOOk
-        </button>
+        </button>:null}
         {roleId==0?
            (
            <Button

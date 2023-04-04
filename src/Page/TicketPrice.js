@@ -97,7 +97,7 @@ import { useNavigate } from 'react-router-dom'
 //       "certificate":"English|U"
 //     }
 //   ]
-function TicketPrice() {
+function TicketPrice({roleId}) {
   const navigate=useNavigate();
 //   const[apiData,setApiData]=useState([]);
 //   const getApi=async()=>{
@@ -121,6 +121,7 @@ const getMovies = () => {
 
 };
 useEffect(() => getMovies(), [])
+// console.log(roleId);
   return (
     <div>
       <div className='card-container'> 
@@ -131,6 +132,7 @@ useEffect(() => getMovies(), [])
        EDIT
      </button>
      }
+     roleId={roleId}
        movie={movie} key={`product cart${index}`} />)):(<p>No Details</p>)}
      </div>
     </div>

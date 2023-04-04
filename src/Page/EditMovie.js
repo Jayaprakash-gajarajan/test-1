@@ -8,9 +8,9 @@ import * as yup from 'yup';
 const movieValidationShema = yup.object({
     name: yup.string().required(),
     poster: yup.string().required().min(4),
-    rating: yup.number().required().min(0).max(10),
-    summary: yup.string().required().max(20),
-    trailer: yup.string().required().min(4),
+    price: yup.number().required().min(0),
+    summary: yup.string().required().max(200),
+    certificate: yup.string().required().min(4),
   })
 function EditMovie() {
     const { id } = useParams();
@@ -37,9 +37,9 @@ export function Update({details}){
       initialValues: {
         name: details.name,
         poster: details.poster,
-        rating: details.rating,
+        price: details.price,
         summary: details.summary,
-        trailer: details.trailer,
+        certificate: details.certificate,
         
       },
       validationSchema: movieValidationShema,
@@ -56,7 +56,7 @@ export function Update({details}){
       method:"PUT",
       body:JSON.stringify(update),
       headers:{"Content-type":"application/json"},
-    }).then(()=>navigate("/movies"));
+    }).then(()=>navigate("/tickets"));
   };
     return(
         <form onSubmit={handleSubmit} className='add-movie-form'>
@@ -79,14 +79,14 @@ export function Update({details}){
         {touched.poster && errors.poster ? errors.poster : null}
   
         <TextField
-          label="rating"
+          label="price"
           variant='outlined'
-          name="rating"
-          value={values.rating}
+          name="price"
+          value={values.price}
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        {touched.rating && errors.rating ? errors.rating : null}
+        {touched.price && errors.price ? errors.price : null}
   
         <TextField
           label="summary"
@@ -98,14 +98,14 @@ export function Update({details}){
         />
         {touched.summary && errors.summary ? errors.summary : null}
         <TextField
-          label="trailer"
+          label="certificate"
           variant='outlined'
-          value={values.trailer}
-          name="trailer"
+          value={values.certificate}
+          name="certificate"
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        {touched.trailer && errors.trailer ? errors.trailer : null}
+        {touched.certificate && errors.certificate ? errors.certificate : null}
   
         <Button type="submit" variant='contained'onClick={updateUser}>Update Movie</Button>
       </form>

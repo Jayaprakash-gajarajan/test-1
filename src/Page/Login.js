@@ -13,20 +13,26 @@ import FormControl from '@mui/material/FormControl';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 import { type } from '@testing-library/user-event/dist/type';
+import {FaEye, FaEyeSlash} from 'react-icons/fa'
 // import TextField from '@mui/material/TextField';
 // signup  page i am not created so i can insert the data in postman
 // ADMIN can only see the delete button 
 // ADMIN: username:"prakash"password:"prakash@123" roleId :"0"
 // NORMAL USER: username:"sridhar"password:"sridhar@123" roleId :"1"
 function Login() {
-    const [showPassword, setShowPassword] = React.useState(false);
-
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-  
-    // const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    //   event.preventDefault();
-    // };
-
+    
+const handleToggle=()=>{
+  if(passwordType==="password"){
+    setPasswordType("text");
+    setPasswordIcon(<FaEye/>)
+  }
+  else{
+    setPasswordType("password");
+    setPasswordIcon(<FaEyeSlash/>)
+  }
+}
+    const [passwordType,setPasswordType]=useState("password");
+    const [passwordIcon,setPasswordIcon]=useState(<FaEyeSlash/>);
     const [formState,setFormState]=useState("success");
     const navigate=useNavigate();
     const {handleChange,values,handleSubmit}=useFormik({
@@ -57,49 +63,49 @@ function Login() {
   return (
     <div>
        <form onSubmit={handleSubmit} className="login-form" >
-                <h2>LOGIN</h2>
+                <h2 style={{marginTop:"20px"}}>LOGIN</h2>
             <TextField 
             id="outlined-basic" 
             label="Username"
              variant="outlined"
              onChange={handleChange} 
-             value={values.username}
-             name="username" 
+            //  value={values.username}
+             name="username"
+             
              /> 
-        
-              <FormControl sx={{ m: 0, width: '46ch',fontSize:'15px' }} variant="filled">
-          <InputLabel htmlFor="filled-adornment-password"
+       {/* <input id='outlined-basic'
+       type='password'
+        label="Password"
+        variant="outlined"
+         placeholder='Password'
+         onChange={handleChange}
+        //  value={values.username}
+         name='password'
+         /> */}
          
-          name="password" 
-          >Password</InputLabel>
-          <FilledInput
-            id="filled-adornment-password"
-            onChange={handleChange}
-            type={showPassword ?"text":"password"}
-            endAdornment={
-              <InputAdornment position="end"
-              value={values.password}
-              >
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                //   onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-        
+             <TextField 
+             type={passwordType}
+            id="outlined-basic" 
+            label="Password"
+             variant="outlined"
+             onChange={handleChange} 
+             name="password"
+             /> 
+            <span className="eye" onClick={handleToggle}>{passwordIcon}</span>
+           
             <Button  color={formState}
             type="submit" variant="contained">
                 {formState ==="error"?"RETRY":"LOGIN"}
                 </Button>
             </form>
+            <Button onClick={()=>logout()}>logout</Button>
         </div>
   )
+}
+function logout() {
+  localStorage.removeItem("token")
+  window.location.href = "/";
+
 }
 
 export default Login

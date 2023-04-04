@@ -26,6 +26,7 @@ function App() {
   let [price,setPrice]=useState(0);
   let [payment,setPayment]=useState(false);
   const [name ,setName]=useState("0");
+  const roleId=localStorage.getItem("roleId");
   return (
     <div className="App">
      <Navigation/>
@@ -37,9 +38,21 @@ function App() {
           <Movies/>
      </ProdectedRoute>
          }/>
-    <Route path='/tickets' element={<TicketPrice/>}/>
-    <Route path='/addmovie' element={<AddMovie/>}></Route>
-    <Route path='/edit/:id' element={<EditMovie/>}></Route>
+    <Route path='/tickets' element={
+    <ProdectedRoute>
+    <TicketPrice roleId={roleId}/>
+</ProdectedRoute>
+    }/>
+   <Route path='/addmovie' element={
+    <ProdectedRoute>
+      <AddMovie/>
+      </ProdectedRoute>
+    }></Route>
+    <Route path='/edit/:id' element={
+    <ProdectedRoute>
+    <EditMovie/>
+    </ProdectedRoute>}
+    ></Route>
     <Route path='/theater' element={<Theater count={count} setCount={setCount} price={price} setPrice={setPrice} setPayment={setPayment}name={name}setName={setName} />}/>
     <Route path='/pay' element={<Payment count={count}setCount={setCount} price={price}setPrice={setPrice} payment={payment} setPayment={setPayment}name={name} setName={setName}/>}></Route>
     <Route path='/login' element={<Login/>}></Route>

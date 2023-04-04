@@ -15,15 +15,15 @@ function Navigation() {
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to={'/movies'}>Movies</Link>
         </li>
-        <li className="nav-item">
+      { roleId==0?(<li className="nav-item">
           <Link className="nav-link" to={'/addmovie'}>Add Movie</Link>
-        </li>
-        <li className="nav-item">
+        </li>):null}
+        {/* <li className="nav-item">
           <Link className="nav-link" to={'/edit/:id'}>Edit Movie</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to={'/tickets'}>Tickets Details</Link>
-        </li>
+        </li> */}
+        {roleId==0?(<li className="nav-item">
+          <Link className="nav-link" to={'/tickets'}>Edit Movie</Link>
+        </li>):null}
         <li className="nav-item">
           <Link className="nav-link" to={'/theater'}>Theater</Link>
         </li>
@@ -32,7 +32,7 @@ function Navigation() {
            Payment
           </Link>
           </li> 
-          <li className="nav-item">
+          <li className="nav-item" >
          <Link className="nav-link" to={'/login'}>Login</Link>
         </li>
         <li>

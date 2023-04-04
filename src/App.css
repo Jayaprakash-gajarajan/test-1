@@ -11,6 +11,13 @@
   margin: 0 auto ;
 }
 
+.eye{
+  position: absolute;
+  right:17%;
+  top:39.5%;
+  left:40%;
+ 
+}
 .add-movie-form {
   height: 100vh;
   display: flex;

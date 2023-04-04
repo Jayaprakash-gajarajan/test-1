@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
-function TicketDetails({movie,editButton}) {
+function TicketDetails({movie,editButton,roleId}) {
   const navigate=useNavigate();
-  const roleId=localStorage.getItem("roleId");
+  console.log(roleId);
   return (
     <div>
        <div className="col card" style={{width:"18rem"}}>
@@ -14,10 +14,7 @@ function TicketDetails({movie,editButton}) {
     <h6>Certificate :{movie.certificate}</h6>
     <h4>Price :{movie.price}</h4>
     <p className="card-text">
-        <button className='btn btn-primary mt-3 w-100'onClick={()=>(navigate('/login'))} >
-          BOOk
-        </button> 
-       {editButton}
+    {editButton}
     </p>
   </div>
 </div>
