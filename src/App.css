@@ -12,10 +12,11 @@
 }
 
 .eye{
+  width: 15px;
   position: absolute;
   right:17%;
   top:39.5%;
-  left:40%;
+  left:60%;
  
 }
 .add-movie-form {
