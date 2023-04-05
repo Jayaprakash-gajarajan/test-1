@@ -98,7 +98,7 @@ const handleToggle=()=>{
                 {formState ==="error"?"RETRY":"LOGIN"}
                 </Button>
             </form>
-            <Button onClick={()=>logout()}>logout</Button>
+            <Button onClick={()=>logout()}>Logout</Button>
         </div>
   )
 }
