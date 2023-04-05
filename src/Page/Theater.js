@@ -3,6 +3,39 @@ import '../Page/Theater.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 function Theater({count,setCount,price,setPrice,setPayment,name,setName}) {
+
+  const handleSubmit =(e)=>{
+    e.preventDefault();
+    if(price==""){
+      alert("please select the site");  
+    }
+    else{
+      var options={
+        key:"rzp_test_BML8CQloOOhbVP",
+        key_secret:"Gp5To3jisLKXIEI9WJFg02cL",
+        amount: price *100,
+        currency:"INR",
+        name:"STARTUP_PROJECTS",
+        description:"testing purpose",
+        handler:function(response){
+          alert(response.razorpay_payment_id)
+        },
+        prefill:{
+          name:"Jayaprakash",
+          email:"jayaprakash58563@gmail.com",
+          contact:"6754566778"
+        },
+        notes:{
+          address:"Razorpay corporate office"
+        },
+        theme:{
+          color:"#3399cc"
+        }
+      };
+    }
+    var pay=new window.Razorpay(options);
+    pay.open();
+}
   // const [disabled,setDisabled]=useState(false)
   const navigate=useNavigate();
   const [show,setShow]=useState(true);
@@ -110,9 +143,9 @@ let style2={
 </div>
 </div>
 <div class="mb-3 row">
-    <label  class="col-sm-2 m-15 col-form-label">Name:</label>
+    <label  class="col-sm-2 m-15 col-form-label">Total:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword" onChange={(e)=>setName(e.target.value)}/>
+      <input type="text" placeholder='Amount' value={price} onChange={(e)=>setPrice(e.target.value)}/>
     </div>
   </div>
     <ul className="showcase">
@@ -280,10 +313,7 @@ let style2={
     </div>
   <p className="text">You have selected <span id="count">{count}</span> seat for a price of RS.<span id="total">{price}</span></p>   
 </div>
-    <button className='btn btn-primary w-100' onClick={()=>{
-      setPayment(false)
-      (navigate('/pay'))}
-    }
+    <button className='btn btn-primary w-100' onClick={handleSubmit}
        >Proceed to pay </button> 
 </div>
   )

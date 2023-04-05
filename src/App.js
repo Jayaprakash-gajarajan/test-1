@@ -53,8 +53,12 @@ function App() {
     <EditMovie/>
     </ProdectedRoute>}
     ></Route>
-    <Route path='/theater' element={<Theater count={count} setCount={setCount} price={price} setPrice={setPrice} setPayment={setPayment}name={name}setName={setName} />}/>
-    <Route path='/pay' element={<Payment count={count}setCount={setCount} price={price}setPrice={setPrice} payment={payment} setPayment={setPayment}name={name} setName={setName}/>}></Route>
+    <Route path='/theater' element={
+      <ProdectedRoute>
+    <Theater count={count} setCount={setCount} price={price} setPrice={setPrice} setPayment={setPayment}name={name}setName={setName} />
+    </ProdectedRoute>
+      }/>
+    {/* <Route path='/pay' element={<Payment count={count}setCount={setCount} price={price}setPrice={setPrice} payment={payment} setPayment={setPayment}name={name} setName={setName}/>}></Route> */}
     <Route path='/login' element={<Login/>}></Route>
     <Route path='/signup'element={<Signin/>}></Route>
   </Routes>

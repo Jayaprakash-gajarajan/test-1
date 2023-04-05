@@ -99,18 +99,6 @@ import { useNavigate } from 'react-router-dom'
 //   ]
 function TicketPrice({roleId}) {
   const navigate=useNavigate();
-//   const[apiData,setApiData]=useState([]);
-//   const getApi=async()=>{
-//     const movie=await axios.get("http://localhost:4000/movies")
-//     setApiData(movie.data)
-//     console.log(movie);
-//   } 
-//   useEffect(()=>{
-//  getApi();
-//   },[])
-// const dispatcher=useDispatch();
-// const {items}=useSelector((state)=>state.movie);
-// console.log(items);
 const [items,setItems]=useState([]);
 const getMovies = () => {
   fetch(`https://63edccda388920150dd323c9.mockapi.io/movies`, {

@@ -27,11 +27,11 @@ function Navigation() {
         <li className="nav-item">
           <Link className="nav-link" to={'/theater'}>Theater</Link>
         </li>
-        <li className="nav-item dropdown">
+        {/* <li className="nav-item dropdown">
           <Link className="nav-link"to={'/pay'} role="button">
            Payment
           </Link>
-      </li>
+      </li> */}
           <li className="nav-item" >
          <Link className="nav-link" to={'/login'}>Login</Link>
         </li>
