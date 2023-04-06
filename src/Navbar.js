@@ -7,7 +7,9 @@ class Navbar extends Component {
         this.setState({clicked:
         !this.state.clicked})
     }
+    
     render(){
+   const roleId=localStorage.getItem("roleId");
   return (
     <div>
       <nav>
@@ -19,8 +21,8 @@ class Navbar extends Component {
             "#navbar active":"#navbar"}>
                 <li><a className='active' href='/'>Home</a></li>
                 <li><a href='/movies'>Movies</a></li>
-                <li><a href='/addmovie'>Add movies</a></li>
-                <li><a href='/tickets'>Edit Movies </a></li>
+               {roleId==0?<li><a href='/addmovie'>Add movies</a></li>:null}
+               {roleId==0? <li><a href='/tickets'>Edit Movies </a></li>:null}
                 <li><a href='/theater'>Theater</a></li>
                 <li><a href='/login'>Login</a></li>
                 <li><a href='/signup'>SignUp</a></li>
