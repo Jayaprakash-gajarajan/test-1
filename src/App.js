@@ -20,6 +20,7 @@ import { ProdectedRoute } from './Page/Movies';
 import AddMovie from './Page/AddMovie';
 import Signin from './Signin';
 import EditMovie from './Page/EditMovie';
+import Navbar from './Navbar';
 // import SliderOne from './SliderOne';
 function App() {
   let [count,setCount]=useState(0);
@@ -29,8 +30,10 @@ function App() {
   const roleId=localStorage.getItem("roleId");
   return (
     <div className="App">
-     <Navigation/>
+     {/* <Navigation/> */}
+     <Navbar/>
      <Routes>
+      <Route path='/nav' element={<Navbar/>}></Route>
     <Route path='/' element={<Home/>}/>
     
     <Route path='/movies' element={
