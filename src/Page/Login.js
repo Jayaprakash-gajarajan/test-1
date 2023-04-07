@@ -55,6 +55,7 @@ const handleToggle=()=>{
                 console.log("success",result);
                 localStorage.setItem("token",result.token)
                 localStorage.setItem("roleId",result.roleId)
+                const roleId=localStorage.getItem("roleId")
                 navigate("/movies")
             }
           
