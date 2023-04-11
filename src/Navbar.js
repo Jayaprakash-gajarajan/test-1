@@ -24,8 +24,8 @@ class Navbar extends Component {
                {roleId==0?<li><a href='/addmovie'>Add movies</a></li>:null}
                {roleId==0? <li><a href='/tickets'>Edit Movies </a></li>:null}
                 <li><a href='/theater'>Theater</a></li>
-                <li><a href='/login'>Login</a></li>
-                <li><a href='/signup'>SignUp</a></li>
+               {roleId?<li><button className='logout__btn' onClick={()=>logout()}>Logout</button></li>:<li><a href='/login'>Login</a></li>}
+                {roleId?null:<li><a href='/signup'>SignUp</a></li>}
 
             </ul>
          </div>
@@ -38,6 +38,12 @@ class Navbar extends Component {
     </div>
   );
 }
+}
+function logout() {
+  localStorage.removeItem("token")
+  localStorage.removeItem("roleId")
+  window.location.href = "/";
+
 }
 
 export default Navbar
