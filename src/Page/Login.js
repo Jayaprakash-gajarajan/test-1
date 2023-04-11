@@ -106,7 +106,7 @@ const [lg,setLg]=useState("error");
                 {formState ==="error"?"RETRY":"LOGIN"}
                 </Button>
             </form>
-           {roleId ?(<Button onClick={()=>logout()}>Logout</Button>):(<h2></h2>)}
+           {roleId ?(<Button onClick={()=>logout()}>Logout</Button>):(null)}
         </div>
   )
 }
