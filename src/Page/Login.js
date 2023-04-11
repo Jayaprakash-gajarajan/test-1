@@ -20,7 +20,7 @@ import {FaEye, FaEyeSlash} from 'react-icons/fa'
 // ADMIN: username:"prakash"password:"prakash@123" roleId :"0"
 // NORMAL USER: username:"sridhar"password:"sridhar@123" roleId :"1"
 function Login() {
-    
+    const roleId=localStorage.getItem("roleId");
 const handleToggle=()=>{
   if(passwordType==="password"){
     setPasswordType("text");
@@ -31,6 +31,13 @@ const handleToggle=()=>{
     setPasswordIcon(<FaEyeSlash/>)
   }
 }
+// const lg=()=>{
+// if(formState=="success"){
+//   setClicked("true");
+// }
+// }
+const [lg,setLg]=useState("error");
+    const [clicked,setClicked]=useState("false")
     const [passwordType,setPasswordType]=useState("password");
     const [passwordIcon,setPasswordIcon]=useState(<FaEyeSlash/>);
     const [formState,setFormState]=useState("success");
@@ -92,19 +99,20 @@ const handleToggle=()=>{
              onChange={handleChange} 
              name="password"
              /> 
-            <span className="eye" onClick={handleToggle}>{passwordIcon}</span>
+            <span className="eye" onClick={handleToggle }>{passwordIcon}</span>
            
             <Button  color={formState}
             type="submit" variant="contained">
                 {formState ==="error"?"RETRY":"LOGIN"}
                 </Button>
             </form>
-            <Button onClick={()=>logout()}>Logout</Button>
+           {roleId ?(<Button onClick={()=>logout()}>Logout</Button>):(<h2></h2>)}
         </div>
   )
 }
 function logout() {
   localStorage.removeItem("token")
+  localStorage.removeItem("roleId")
   window.location.href = "/";
 
 }
