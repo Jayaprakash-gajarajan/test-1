@@ -28,7 +28,7 @@ function SliderOne() {
       <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active">
-      <img src="https://static.moviecrow.com/marquee/varisu-movie-stills/207487_thumb_665.jpg"
+      <img src="https://tse3.mm.bing.net/th?id=OIP.ouzA3oMQPOTbE3DAw7Q4jwHaEK&pid=Api&P=0"
        className="img-fluid d-block w-100" alt="Grab the offer"/>
        <h1>Varisu</h1>
     </div>
@@ -36,10 +36,10 @@ function SliderOne() {
       <img src="https://www.filmibeat.com/ph-big/2022/12/thunivu_167091617400.jpg" 
       className="img-fluid d-block w-100" alt="BOGO"
       />
-      <h1>thunivu</h1>
+      <h1>Thunivu</h1>
     </div>
     <div className="carousel-item">
-      <img src="https://mir-s3-cdn-cf.behance.net/projects/404/2ed8a3143422723.Y3JvcCw0NjY5LDM2NTIsMjc3LDExMzI.png" 
+      <img src="https://tse4.mm.bing.net/th?id=OIP.hG5Dq6ZL1-IbMCGdaPMe1wHaEK&pid=Api&P=0" 
       className="img-fluid d-block w-100" alt="Flash sale"/>
       <h1>Avatar no way home</h1>
     </div>
